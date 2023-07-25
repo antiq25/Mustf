@@ -1,0 +1,25 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Flask Application</title>
+  </head>
+  <body>
+    {% block content %}
+    {% endblock %}
+    
+    {% include 'loader.html' %} <!-- Include the loader -->
+    
+    <script>
+      // Show the loader when the page starts loading
+      document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('loader').style.display = 'flex';
+      });
+
+      // Hide the loader after 2 seconds
+      setTimeout(function () {
+        document.getElementById('loader').style.display = 'none';
+      }, 2000);
+    </script>
+  </body>
+</html>

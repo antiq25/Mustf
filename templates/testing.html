@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Elafon Mechanical</title>
+  <!-- CSS for DataTables -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+</head>
+<body>
+    <table id="tools-table" class="display">
+        <thead>
+            <tr>
+                <th>Tool Name</th>
+                <th>Sign Out</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    <table id="keys-table" class="display">
+        <thead>
+            <tr>
+                <th>Key Name</th>
+                <th>Sign Out</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+        
+  <script>
+    $(document).ready(function() {
+        var toolsTable = $('#tools-table').DataTable();
+        var keysTable = $('#keys-table').DataTable();
+    
+        function refreshTables() {
+            $.getJSON('/search/tools', function(data) {
+                toolsTable.clear();
+                data.forEach(function(tool) {
+                    toolsTable.row.add([
+                        tool.name,
+                        '<button data-tool-id="' + tool.id + '" class="signout-tool-btn">Sign out</button>'
+                    ]).draw();
+                });
+            });
+    
+            $.getJSON('/search/keys', function(data) {
+                keysTable.clear();
+                data.forEach(function(key) {
+                    keysTable.row.add([
+                        key.name,
+                        '<button data-key-id="' + key.id + '" class="signout-key-btn">Sign out</button>'
+                    ]).draw();
+                });
+            });
+        }
+    
+        refreshTables();
+    
+        // Refresh tables every minute to keep data up to date
+        setInterval(refreshTables, 60 * 1000);
+    
+        // Event handlers for sign out buttons
+        $('body').on('click', '.signout-tool-btn', function() {
+            var toolId = $(this).data('tool-id');
+            $.ajax({
+                url: '/equipment',
+                type: 'POST',
+                data: {
+                    tool_id: toolId,
+                },
+                success: function(response) {
+                    alert('Tool signed out successfully');
+                    refreshTables();
+                },
+                error: function(error) {
+                    alert('Failed to sign out tool');
+                }
+            });
+        });
+    
+        $('body').on('click', '.signout-key-btn', function() {
+            var keyId = $(this).data('key-id');
+            $.ajax({
+                url: '/equipment',
+                type: 'POST',
+                data: {
+                    key_id: keyId,
+                },
+                success: function(response) {
+                    alert('Key signed out successfully');
+                    refreshTables();
+                },
+                error: function(error) {
+                    alert('Failed to sign out key');
+                }
+            });
+        });
+    });
+    
+      
+  </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>Elafon Mechanical</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#"><img src="https://i.ibb.co/SvMZJ2T/Elafon-Logo.png" alt="Logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/equipment">Returns</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Utilities
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Building Contacts</a></li>
+                  <li><a class="dropdown-item" href="#">Plans</a></li>
+                  <li><a class="dropdown-item" href="#">Manuals</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Wholesalers</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Admin
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="/add_item">Add Items</a></li>
+                  <li><a class="dropdown-item" href="https://poseidon.invisiblerobot.io">Poseidon</a></li>
+                  <li><a class="dropdown-item" href="/testing">Testing</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="containers">
+      {% if signouts %}
+        <div class="table-container table-responsive">
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th>Technician</th>
+                <th>Key Name</th>
+                <th>Date Out</th>
+                <th>Date Returned</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for signout in signouts %}
+              {% if signout.key %}
+              <tr>
+                <td>{{ signout.technician.name }}</td>
+                <td>{{ signout.key.name }}</td>
+                <td>{{ signout.date_out }}</td>
+                <td>{{ signout.date_returned if signout.returned else "Not yet returned" }}</td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="table-container table-responsive">
+            <table class="table table-dark">
+            <thead>
+              <tr>
+                <th>Technician</th>
+                <th>Tool Name</th>
+                <th>Date Out</th>
+                <th>Date Returned</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for signout in signouts %}
+              {% if signout.tool %}
+              <tr>
+                <td>{{ signout.technician.name }}</td>
+                <td>{{ signout.tool.name }}</td>
+                <td>{{ signout.date_out }}</td>
+                <td>{{ signout.date_returned if signout.returned else "Not yet returned" }}</td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class="text-center">
+          <h2 class="text-white">Everything is signed in!</h2>
+        </div>
+      {% endif %}
+    </main>
+    
+      </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+  </html>

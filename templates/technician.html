@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Technician</title>
+</head>
+<body>
+    <h1>Technician: {{ tech.name }}</h1>
+    <h2>Signouts:</h2>
+    <ul>
+        {% for signout in signouts %}
+            <li>{{ signout.tool.name }} - {{ signout.date_out }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('home') }}">Go back to Home</a>
+</body>
+</html>

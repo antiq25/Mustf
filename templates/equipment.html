@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Elafon Mechanical</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/nav.css">
+  <link rel="stylesheet" href="../static/css/forms.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="https://i.ibb.co/SvMZJ2T/Elafon-Logo.png" alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item active"><a class="nav-link" href="/equipment">Returns</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Utilities
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Building Contacts</a></li>
+                <li><a class="dropdown-item" href="#">Plans</a></li>
+                <li><a class="dropdown-item" href="#">Manuals</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Wholesalers</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Admin
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="/add_item">Add Items</a></li>
+                <li><a class="dropdown-item" href="https://poseidon.invisiblerobot.io">Poseidon</a></li>
+                <li><a class="dropdown-item" href="/testing">Testing</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <form id="return-form" action="{{ url_for('return_item') }}" method="post" class="dark-form">
+    <div class="form-group">
+      <label for="signout_id" class="text-white">Signout ID:</label>
+      <select id="signout_id" name="signout_id" required class="form-control">
+        <option value="">Select Item to Return</option>
+        {% for signout in tech_signouts %}
+        <option value="{{ signout.id }}">
+          {% if signout.tool %}{{ signout.tool.name }}{% endif %}
+          {% if signout.key %}{{ signout.key.name }}{% endif %}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Return" class="btn btn-primary">
+    </div>
+  </form>
+
+  <h2>Available Tools:</h2>
+  <ul>
+    {% for tool in tools %}
+    <li>{{ tool.name }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Available Keys:</h2>
+  <ul>
+    {% for key in keys %}
+    <li>{{ key.name }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Signout Tools:</h2>
+  <form action="/equipment" method="post" class="dark-form">
+    <div class="form-group">
+      <select name="tool_id" class="form-control">
+        {% for tool in tools %}
+        <option value="{{ tool.id }}">{{ tool.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Signout Tool" class="btn btn-primary">
+    </div>
+  </form>
+
+  <h2>Signout Keys:</h2>
+  <form action="/equipment" method="post" class="dark-form">
+    <div class="form-group">
+      <select name="key_id" class="form-control">
+        {% for key in keys %}
+        <option value="{{ key.id }}">{{ key.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Signout Key" class="btn btn-primary">
+    </div>
+  </form>
+
+  <!-- Add the Bootstrap JavaScript and jQuery scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('loader-wrapper').style.display = 'flex';
+    });
+
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var loaderWrapper = document.getElementById('loader-wrapper');
+        loaderWrapper.style.opacity = '0';
+        setTimeout(function () {
+          loaderWrapper.style.display = 'none';
+        }, 500);
+      }, 700);
+    });
+  </script>
+</body>
+
+</html>

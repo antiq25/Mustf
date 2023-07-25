@@ -1,0 +1,104 @@
+:root {
+  --primary-color: rgba(208, 208, 208, 0.15);
+  --secondary-color: rgba(8, 7, 16, 0.6);
+  --light-color: #fff;
+  --dark-color: #000000;
+}
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+
+body {
+background-image: url('https://img1.wallspic.com/crops/7/8/3/3/7/173387/173387-angle-line-blue-tints_and_shades-electric_blue-1920x1080.jpg');
+background-size: cover center, center;
+background-repeat: no-repeat;
+backdrop-filter: blur(10px);
+background-color: #080710;
+font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+
+
+  .containers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    padding: 20px;
+  }
+
+  .table-container {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 40px var(--secondary-color);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+  }
+
+  .table-dark th {
+    background-color: var(--dark-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px var(--secondary-color);
+    color: var(--light-color);
+    border-top: none;
+  }
+
+  .table-dark td {
+    background-color: rgba(208, 208, 208, 0.3);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 40px var(--secondary-color);
+    border-top: none;
+  }
+
+  .animated-button {
+    background-color: #3b3d52;
+    color: var(--light-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .animated-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 10px rgba(59, 61, 82, 0.5);
+  }
+
+  @media (min-width: 992px) {
+    .containers {
+      flex-direction: row;
+    }
+
+    .table-container {
+      margin-right: 20px;
+      margin-bottom: 0;
+      flex: 1;
+    }
+
+    .table-container:last-child {
+      margin-right: 0;
+    }
+  }
+
+  /* Make sure tables are same width */
+  .table {
+    width: 100%;
+  }
+
+
+  .text-center .text-white {
+    text-align: center;
+    color: white;
+    padding: 5px;
+  }
+
+

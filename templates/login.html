@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>EQ Framework</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/loginlog.css">
+  <link rel="stylesheet" href="../static/css/nav.css">
+</head>
+<body>
+    <form class="animated-form" action="/login" method="post">
+      <div class="container">
+          <h3 class="animated-heading3" style="font-size: 10px;">#PoseidonTRACK.NET
+          <span class="span1" style="font-size: 8px;">2023&copy;</span>
+        </h3>
+        <h3 class="animated-heading3"></h3>
+          <div class="dark-form">
+          <div class="navbar-brandimgs">
+            <img src="https://i.ibb.co/rG2LDbH/GqHLZbp.png"></img>
+            <label for="name">Username:</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="enter your name" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="enter your password" required />
+          </div>
+          <input class="animated-button" type="submit" value="Login" />
+        </div>
+        <footer>
+          <p>Don't have an account?</p>
+          <div class="shared-bar">
+            <a href="/signup" class="animated-link">Sign Up</a>
+          </div>
+          </footer>
+      </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+  </html>
+</body>
+</html>

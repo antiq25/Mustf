@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Elafon Mechanical</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Glassmorphism styles */
+    * {
+      font-family: "Poppins", sans-serif;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #080710;
+      overflow: overlay;
+    }
+
+    /* Scrollbar styles */
+    ::-webkit-scrollbar {
+      width: 11px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(85, 85, 85, 0.25);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0);
+    }
+
+    /* Navigation bar styles */
+    header {
+      background: rgba(68, 67, 67, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(3.5px);
+      -webkit-backdrop-filter: blur(3.5px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 10px 15px;
+    }
+
+    .navbar-dark .navbar-brand {
+      max-width: 100px;
+      filter: invert(1);
+    }
+
+    /* Navigation links styling */
+    .navbar-nav .nav-link {
+      padding: 10px 20px;
+      border-radius: 30px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background-color: rgba(40, 42, 55, 0.8);
+      color: #fff;
+    }
+
+    .navbar-nav .dropdown-menu {
+      background-color: rgba(59, 61, 82, 0.9);
+      border: none;
+    }
+
+    .navbar-nav .dropdown-item {
+      color: #fff;
+      transition: background-color 0.3s;
+    }
+
+    .navbar-nav .dropdown-item:hover {
+      background-color: rgba(40, 42, 55, 0.8);
+    }
+
+    /* Main content styles */
+    main {
+      padding-top: 20px;
+    }
+
+    /* Table styles */
+    .table-container {
+      background-color: rgba(208, 208, 208, 0.15);
+      box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 20px;
+    }
+
+    /* Table header styles */
+    .table-dark th {
+      background-color: rgba(208, 208, 208, 0.15);
+      color: #fff;
+      border-top: none;
+    }
+
+    /* Table row styles */
+    .table-dark td {
+      background-color: rgba(208, 208, 208, 0.15);
+      border-top: none;
+    }
+
+    /* Table row hover effect */
+    .table-dark tbody tr:hover {
+      background-color: #f0f1f2;
+    }
+
+    /* Custom styling for buttons */
+    .animated-button {
+      background-color: #3b3d52;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .animated-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 10px rgba(59, 61, 82, 0.5);
+    }
+
+    /* Loader animation */
+    #loader-wrapper {
+      display: flex;
+    }
+
+    .loader {
+      border: 4px solid rgba(59, 61, 82, 0.3);
+      border-top: 4px solid #3b3d52;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Additional styles for Admin dropdown */
+    /* ... (Keep the existing styles for .dropdown-menu, .dropdown-item, and .dropdown-item:hover) */
+  </style>
+
+      </head>
+      <body>
+        <header>
+          <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+              <a class="navbar-brand" href="#"><img src="https://i.ibb.co/SvMZJ2T/Elafon-Logo.png" alt="Logo"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/equipment">Returns</a></li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Utilities
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Building Contacts</a></li>
+                      <li><a class="dropdown-item" href="#">Plans</a></li>
+                      <li><a class="dropdown-item" href="#">Manuals</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Wholesalers</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Admin
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <main class="container">
+          <div class="table-container">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th>Technician</th>
+                  <th>Key Name</th>
+                  <th>Date Out</th>
+                  <th>Date Returned</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tbody>
+                  {% for signout in signouts %}
+                  {% if signout.tool %}
+                    <tr>
+                      <td>{{ signout.technician.name }}</td>
+                      <td>{{ signout.tool.name }}</td>
+                      <td>{{ signout.date_out }}</td>
+                      <td>{{ signout.date_returned if signout.returned else "Not yet returned" }}</td>
+                      {% endif %}
+                      {% endfor %}        
+                    </tbody>
+            </table>
+          </div>
+          <div class="table-container">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th>Technician</th>
+                  <th>Tool Name</th>
+                  <th>Date Out</th>
+                  <th>Date Returned</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for signout in signouts %}
+                {% if signout.tool %}
+                  <tr>
+                    <td>{{ signout.technician.name }}</td>
+                    <td>{{ signout.tool.name }}</td>
+                    <td>{{ signout.date_out }}</td>
+                    <td>{{ signout.date_returned if signout.returned else "Not yet returned" }}</td>
+                    {% endif %}
+                    {% endfor %}     
+                  </tbody>
+            </table>
+          </div>
+        </main>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+      </body>
+      </html>
+      

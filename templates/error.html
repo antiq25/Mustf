@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<html lang="en">
+<head>
+  <title>Error Page</title>
+</head>
+<body>
+  <div class="container">
+  <h3 class="animated-heading3"></h3>
+  <div class="logo-container">
+  </div>
+      <h3 class="animated-heading3">Error</h3>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+            <p>Go back to <a href="/">Home</a></p>
+        {% endfor %}
+        </ul>
+    {% endif %}
+  {% endwith %}
+      </div>
+</body>
+</html>
